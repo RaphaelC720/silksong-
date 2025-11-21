@@ -1,36 +1,33 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthUI : MonoBehaviour
 {
-    //tools for UI
-    public Health playerHealth; 
+    public Health ObjectHealth; 
     public GameObject heartPrefab;
     private List<GameObject> spawnedHearts = new List<GameObject>();
     private void Start()
     {
         CreateHearts();
-        playerHealth.OnDamageTaken += UpdateHearts;
+        ObjectHealth.OnDamageTaken += UpdateHearts;
     }
     private void OnDestroy()
     {
-        playerHealth.OnDamageTaken -= UpdateHearts;
+        ObjectHealth.OnDamageTaken -= UpdateHearts;
     }
-    private void UpdateHearts() //on damage lose hearts
+    private void UpdateHearts(int damage) 
     {
         for (int i = 0;i < spawnedHearts.Count;i++)
         {
             Destroy(spawnedHearts[i]);
-
         }
         CreateHearts();
 
     }
     private void CreateHearts()
     {
-        for (int i = 0; i < playerHealth.CurrentHealth; i++)
+        for (int i = 0; i < ObjectHealth.CurrentHealth; i++)
         {
             GameObject spawnedHeart = Instantiate(heartPrefab, transform);
             spawnedHearts.Add(spawnedHeart);

@@ -1,92 +1,80 @@
-using System.Collections;
+    using System.Collections;
 
-using UnityEngine;
+    using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
-    // declaring speed of player and their rigidbody
-    public float speed = 5;
-    public Rigidbody2D rb;
-
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 15f; // speed
-    private float dashingTime = 0.2f; // time period of dash
-    private float dashingCooldown = 1f; // dash cooldown (1 second)
-    public float MaxSpeed = 5; // Player's Max speed
-    public float Friction = 0.9f;
-    Vector2 input;
-    public Animator animator;
-    
-    void Update()
+    public class PlayerMovement : MonoBehaviour
     {
-        if (isDashing) 
+        //movement stuff
+        private float moveInput;
+        public float turtleSpeed = 5;
+        private float accelerationTime = 0.1f;
+        private float velocityXSmoothing = 0f;
+        private float velocityYSmoothing = 0f;
+        public float MaxturtleSpeed = 5;
+        private float dashingPower = 15f; 
+        private float dashingTime = 0.2f; 
+        private float dashingCooldown = 1f;
+        private bool canDash = true;
+        private bool isDashing;
+        Vector2 input;
+        public Animator animator;
+        public Rigidbody2D turtleRB;
+
+
+        void Start()
         {
-            return;
+            turtleRB = GetComponent<Rigidbody2D>();    
+        }
+        void Update()
+        {
+            if (isDashing) 
+                return;
+
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            input = new Vector2(horizontal, vertical).normalized;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+                StartCoroutine(Dash());
+        }
+        private void FixedUpdate()
+        {
+            if (isDashing)
+            {
+                return;
+            }
+            float targetX = input.x * turtleSpeed;
+            float targetY = input.y * turtleSpeed;
+            float smoothedX = Mathf.SmoothDamp(turtleRB.linearVelocity.x, targetX, ref velocityXSmoothing, accelerationTime);
+            float smoothedY = Mathf.SmoothDamp(turtleRB.linearVelocity.y, targetY, ref velocityYSmoothing, accelerationTime);
+            turtleRB.linearVelocity = new Vector2(smoothedX, smoothedY);
+        
+            if (turtleRB.linearVelocity.magnitude > MaxturtleSpeed)
+            {
+                turtleRB.linearVelocity = Vector2.ClampMagnitude(turtleRB.linearVelocity, MaxturtleSpeed); // This will cap the player's max turtleSpeed if exceeded.
+            }
+            if (turtleRB.linearVelocity.magnitude >0.5f)
+                animator.SetBool("IsMoving",true);
+            else
+                animator.SetBool("IsMoving", false);
         }
 
-        // either WASD or arrow keys work for top down movement
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        private IEnumerator Dash()
         {
-            StartCoroutine(Dash());
+            canDash = false;
+            isDashing = true;
+
+            // save current input direction
+            Vector2 dashDirection = input.normalized;
+            // apply dash velocity
+            turtleRB.linearVelocity = dashDirection * dashingPower;
+            // wait during dash
+            yield return new WaitForSeconds(dashingTime);
+            // stop dash movement
+            turtleRB.linearVelocity = Vector2.zero;
+            isDashing = false;
+            // wait for cooldown
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
         }
     }
-    private void FixedUpdate()
-    {
-        if (isDashing)
-        {
-            return;
-        }
-        // speed formula
-        // rb.MovePosition(rb.position + input.normalized * speed * Time.deltaTime); 
-        if(input == Vector2.zero)
-        {
-            rb.linearVelocity *= Friction;
-        }
-        else
-        {
-            rb.AddForce(input.normalized * speed);
-        }
-
-       
-        if (rb.linearVelocity.magnitude > MaxSpeed)
-        {
-            rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, MaxSpeed); // This will cap the player's max speed if exceeded.
-        }
-        if (rb.linearVelocity.magnitude >0.5f)
-        {
-            animator.SetBool("IsMoving",true);
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false);
-        }
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-
-        // save current input direction
-        Vector2 dashDirection = input.normalized;
-
-        // apply dash velocity
-        rb.linearVelocity = dashDirection * dashingPower;
-
-        // wait during dash
-        yield return new WaitForSeconds(dashingTime);
-
-        // stop dash movement
-        rb.linearVelocity = Vector2.zero;
-
-        isDashing = false;
-
-        // wait for cooldown
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-}

@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Shield") // enemy bounces other direction
+        if (other.tag == "Shield") 
         {
             speed *= -3f;
         }
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
        
         if (other.gameObject.TryGetComponent(out PlayerKnockback playerKnockback))
         {
-
             playerKnockback.Knockback(playerKnockback.transform.position - transform.position); //Knocks the player back away from enemy
         }
 

@@ -9,12 +9,12 @@ public class GameManager : MonoBehaviour
     public string nextLevelName;
     public Health playerHealth;
     public Health shoreHealth;
-    private void Awake() // when the game starts
+    private void Awake()
     {
         playerHealth.OnDeath += Lose;
         shoreHealth.OnDeath += Lose;
     }
-    private void OnDestroy() // Restart
+    private void OnDestroy() 
     {
         playerHealth.OnDeath -= Lose;
         shoreHealth.OnDeath -= Lose;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > levelDuration) // when level is done 
+        if (timer > levelDuration) 
         {
             if (!isLevelFinished)
             {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    private void FinishLevel () // load next
+    private void FinishLevel () 
     {
         SceneManager.LoadScene(nextLevelName);
     }
@@ -39,4 +39,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("endscreen");
     }
+    public void StartButton()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+    public void EndButton()
+    {
+        SceneManager.LoadScene("startscreen");
+    }
+
 }

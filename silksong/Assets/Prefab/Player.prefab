@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1803863320541443854}
   - component: {fileID: 1363975291528342374}
   - component: {fileID: 5782788417996445868}
-  - component: {fileID: 430094196863235174}
   - component: {fileID: 8886276116371467381}
-  - component: {fileID: 361242682274627457}
   - component: {fileID: 7054119623227911084}
+  - component: {fileID: 430094196863235174}
+  - component: {fileID: 361242682274627457}
   - component: {fileID: 6279029179674850967}
   - component: {fileID: 2835325226885322697}
   m_Layer: 6
@@ -122,23 +122,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &430094196863235174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005022585083950921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df01c1e43354cc5aca30c83b4d879f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
-  rb: {fileID: 5782788417996445868}
-  MaxSpeed: 7
-  Friction: 0.96
-  animator: {fileID: 2835325226885322697}
 --- !u!61 &8886276116371467381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -185,6 +168,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7054119623227911084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005022585083950921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd4c4c2d145b4958bbe8c743126c0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5
+--- !u!114 &430094196863235174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005022585083950921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df01c1e43354cc5aca30c83b4d879f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turtleSpeed: 5
+  MaxturtleSpeed: 5
+  animator: {fileID: 2835325226885322697}
+  turtleRB: {fileID: 0}
 --- !u!114 &361242682274627457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,21 +216,6 @@ MonoBehaviour:
   spriteB: {fileID: 4388650664785405, guid: d75af39485eb84d748680e6c21bbf810, type: 3}
   displayTime: 3
   animator: {fileID: 2835325226885322697}
---- !u!114 &7054119623227911084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005022585083950921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd4c4c2d145b4958bbe8c743126c0ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  MaxHealth: 3
-  IsDead: 0
 --- !u!114 &6279029179674850967
 MonoBehaviour:
   m_ObjectHideFlags: 0

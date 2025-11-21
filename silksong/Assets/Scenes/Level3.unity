@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d7b37154d0f9f438e6f3ee12471063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1118575186}
+  ObjectHealth: {fileID: 1118575186}
   heartPrefab: {fileID: 8337899804062249984, guid: c2c094a5fac79054bbba8de123ef39b2, type: 3}
 --- !u!114 &1065323232
 MonoBehaviour:
@@ -1357,7 +1357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 5
-  IsDead: 0
 --- !u!1001 &1462478846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1561,7 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d7b37154d0f9f438e6f3ee12471063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 4538350081705277426}
+  ObjectHealth: {fileID: 4538350081705277426}
   heartPrefab: {fileID: 8337899804062249984, guid: 3fc0b94140ccf6b4282f392038e1f1ef, type: 3}
 --- !u!1 &1822517135
 GameObject:
@@ -1592,7 +1591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa95a9cd5f21234481a70721967668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDuration: 100000
+  levelDuration: 60
   isLevelFinished: 0
   nextLevelName: mainscene
   playerHealth: {fileID: 4538350081705277426}
@@ -1889,9 +1888,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 4538350081705277425}
+  - {fileID: 293360300890269369}
   - {fileID: 3938792471620055992}
   - {fileID: 1462478846}
-  - {fileID: 293360300890269369}
   - {fileID: 4112237432564949212}
   - {fileID: 252932321}
   - {fileID: 917665050}

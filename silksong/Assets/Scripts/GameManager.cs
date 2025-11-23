@@ -1,18 +1,24 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float timer;
+    public float timer;
     public float levelDuration = 60;
     public bool isLevelFinished;
     public string nextLevelName;
     public Health playerHealth;
     public Health shoreHealth;
+    public TextMeshProUGUI timerText;
     private void Awake()
     {
         playerHealth.OnDeath += Lose;
         shoreHealth.OnDeath += Lose;
+    }
+    private void Start()
+    {
+        timer = levelDuration;
     }
     private void OnDestroy() 
     {
@@ -21,8 +27,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > levelDuration) 
+        timer -= Time.deltaTime;
+        timerText.text = ((int)timer).ToString();
+        if (timer <= 0) 
         {
             if (!isLevelFinished)
             {
@@ -38,14 +45,6 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         SceneManager.LoadScene("endscreen");
-    }
-    public void StartButton()
-    {
-        SceneManager.LoadScene("Level1");
-    }
-    public void EndButton()
-    {
-        SceneManager.LoadScene("startscreen");
     }
 
 }

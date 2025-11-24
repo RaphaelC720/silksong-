@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     public float timer;
     public float levelDuration = 60;
     public bool isLevelFinished;
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     public Health playerHealth;
     public Health shoreHealth;
     public TextMeshProUGUI timerText;
+    public GameObject darkenPanel;
+    public GameObject dayText;
+    public GameObject transitionText;
     private void Awake()
     {
         playerHealth.OnDeath += Lose;
@@ -18,6 +22,12 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         timer = levelDuration;
     }
     private void OnDestroy() 
@@ -27,14 +37,20 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        timer -= Time.deltaTime;
+        if(isLevelFinished == false)
+        {
+            timer -= Time.deltaTime;
+        }
         timerText.text = ((int)timer).ToString();
         if (timer <= 0) 
         {
-            if (!isLevelFinished)
+            isLevelFinished = true;
+            if (isLevelFinished == true)
             {
-                isLevelFinished = true;
-                FinishLevel();
+                darkenPanel.SetActive(true);
+                dayText.SetActive(false);
+                transitionText.SetActive(true);
+                //FinishLevel();
             }
         }
     }

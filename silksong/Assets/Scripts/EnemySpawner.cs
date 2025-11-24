@@ -13,6 +13,13 @@ public class EnemySpawner : MonoBehaviour
         mainCamera = Camera.main;
         InvokeRepeating(nameof(SpawnEnemy), 0f, spawnInterval); // setting the random spawner
     }
+    private void Update()
+    {
+        if (GameManager.Instance.isLevelFinished == true)
+        {
+            CancelInvoke(nameof(SpawnEnemy));
+        }
+    }
 
     void SpawnEnemy()
     {

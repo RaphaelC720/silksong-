@@ -1,58 +1,72 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldSpawn : MonoBehaviour
 
 {
-    public GameObject Shield; // referencing shield
-    public int ShieldTimer = 300; // time allowed to have shield up
-    public bool isShielded = false; // making shield accessible
-
-    public Sprite spriteA; // Default sprite
-    public Sprite spriteB; // Sprite to show after spacebar
-    public float displayTime = 3f; // Time to show Sprite B
-
-   
+    public GameObject Shield;
+    public Image cooldownUI;
+    public bool isShielded = false; 
+    public bool isOnCooldown = false;
     private bool isSwitching = false;
-    private float timer = 0f;
+    public float cooldownDuration = 1f;
+    private float shieldDuration = 1f;
+    private float cooldownTimer = 0f;
+    private float shieldTimer;
+
+    
     public Animator animator;
 
     void Start()
     {
-        Shield.SetActive(false); // shield is off on start of game
-
-        
-      
+        Shield.SetActive(false);
     }
 
     void Update()
+    {        
+        if (Input.GetKeyDown(KeyCode.Space) && !isShielded && !isOnCooldown)
+        {
+            ActivateShield();
+        }
+        if (isShielded)
+        {
+            shieldTimer -= Time.deltaTime;
+
+            if (shieldTimer <= 0.2f)
+                animator.Play("ShieldWindDown");
+
+            if (shieldTimer <= 0f)
+                EndShield();
+        }
+        if (isOnCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+
+            if (cooldownUI != null)
+                cooldownUI.fillAmount = cooldownTimer / cooldownDuration;
+
+            if (cooldownTimer <= 0f)
+                isOnCooldown = false;
+        }
+    }
+
+    void ActivateShield()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isShielded == false) // shield goes on w/ Space input
-        {
-            isShielded = true;
-        
-            isSwitching = true;
-            animator.Play("Shield");
-        }
+        isShielded = true;
+        shieldTimer = shieldDuration;
 
-        if (ShieldTimer > 0 && isShielded == true) //shield initiation starts timer
-        {
-            Shield.SetActive(true);
-            ShieldTimer--;
-            
-            isSwitching = true;
+        Shield.SetActive(true);
+        animator.Play("Shield");
+        isOnCooldown = true;
+        cooldownTimer = cooldownDuration;
 
-        }
+        if (cooldownUI != null)
+            cooldownUI.fillAmount = 1f;
+    }
 
-        if (ShieldTimer <= 0) // time runs out
-        {
-            Shield.SetActive(false); // shield goes inactive
-            isShielded = false;
-            ShieldTimer = 300; // timer set again for 300
-
-            
-            isSwitching = false;
-            animator.Play("ShieldWineDown");
-
-        }
+    void EndShield()
+    {
+        Shield.SetActive(false);
+        isShielded = false;
     }
 }

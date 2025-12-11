@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-    public float spawnInterval; // amt of time it takes for enemy to spawn 
+    public float spawnInterval; 
 
     private Camera mainCamera;
     private bool isSpawning = false;

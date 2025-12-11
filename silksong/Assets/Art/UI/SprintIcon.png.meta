@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4d990a5e74daf4005a6090789b6316ac
+guid: 2e6d363a33199aa4fb2cdfd4ddc9384e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5545890029168684757
-    second: Box__1_-removebg-preview_0
+      213: -7573745071588859198
+    second: SprintIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Box__1_-removebg-preview_0
+      name: SprintIcon_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 59
-        width: 321
-        height: 318
+        x: 0
+        y: 0
+        width: 674
+        height: 679
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5deeaff1995f6fc40800000000000000
-      internalID: 5545890029168684757
+      spriteID: 2c2a49c1cf6a4e690800000000000000
+      internalID: -7573745071588859198
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Box__1_-removebg-preview_0: 5545890029168684757
+      SprintIcon_0: -7573745071588859198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

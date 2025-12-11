@@ -75,10 +75,6 @@ public class GameManager : MonoBehaviour
             DurationText.SetActive(false);
             startscreenButton.SetActive(false);
         }
-        else
-        {
-            return;
-        }
     }
     public void StartLevel()
     {
@@ -88,6 +84,10 @@ public class GameManager : MonoBehaviour
         dayNumberText.text = "Day " + dayNumber;
         
         timer = levelDuration += 5;
+    }
+    public void StartTransition()
+    {
+        
     }
     public void StartScreen() 
     {

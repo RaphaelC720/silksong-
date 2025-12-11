@@ -13,7 +13,13 @@ public class Health : MonoBehaviour
     {
         CurrentHealth = MaxHealth;
     }
-
+    public void Update()
+    {
+        if(GameManager.Instance.isLevelFinished == true)
+        {
+            CurrentHealth = MaxHealth;
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (IsDead) return;

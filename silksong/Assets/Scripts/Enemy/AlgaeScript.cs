@@ -10,7 +10,9 @@ public class AlgaeScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            
+            PlayerMovement.Instance.movementEnabled = false;
+            PlayerMovement.Instance.currentStuckAmount = PlayerMovement.Instance.StuckAmount;
+            Debug.Log("Stuck");
         }
     }
 }

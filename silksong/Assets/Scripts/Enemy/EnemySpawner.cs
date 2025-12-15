@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(new Vector3(1.1f, Random.Range(0f, 1f), 0));
-        spawnPosition.z = 0f; // creates the spawning range for the random spawner
+        spawnPosition.z = 0f; 
 
         Instantiate(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)], spawnPosition, Quaternion.identity); // instantiates the enemy prefab
     }

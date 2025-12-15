@@ -17,7 +17,6 @@ public class CountdownScript : MonoBehaviour
         if (GameManager.Instance.isLevelFinished && !timerStarted)
         {
             timerStarted = true;
-            timeLeft = 10f; 
         }
 
         if (timerStarted)
@@ -34,4 +33,11 @@ public class CountdownScript : MonoBehaviour
             }
         }
     }
+    public void ResetCountdown()
+    {
+        timeLeft = 10f;
+        timerStarted = false;
+        enabled = true;
+    }
+
 }

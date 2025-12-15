@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
     public GameObject transitionCountdownText;
     public GameObject DurationText;
     public GameObject startscreenButton;
+    bool transitionStarted = false;
+
+    public GameObject BoxSpawner;
+    public GameObject BottleSpawner;
+    public GameObject AlgaeSpawner;
+
     private void Awake()
     {
         playerHealth.OnDeath += Lose;
@@ -35,7 +41,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
         timer = levelDuration;
         isLevelFinished = false;
-        
+
+        //spaawners
+        BoxSpawner.SetActive(true);
+        BottleSpawner.SetActive(false);
+        AlgaeSpawner.SetActive(false);
     }
     private void OnDestroy() 
     {
@@ -44,50 +54,84 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(isLevelFinished == false)
+        if(!isLevelFinished)
         {
             timer -= Time.deltaTime;
+            timerText.text = ((int)timer).ToString();
         }
-        timerText.text = ((int)timer).ToString();
-        if (timer <= 0) 
+        if (timer <= 0 && !transitionStarted) 
         {
-            isLevelFinished = true;
-            if (isLevelFinished == true)
-            {
-                darkenPanel.SetActive(true);
-                dayText.SetActive(false);
-                transitionDayText.SetActive(true);
-                transitionCountdownText.SetActive(true);
-                DurationText.SetActive(true);
-                startscreenButton.SetActive(true);
-            }
+            StartTransition();
         }
-
-        if (CountdownScript.Instance.timeLeft <= 2 && isLevelFinished)
+        if (isLevelFinished && CountdownScript.Instance.timeLeft <= 0)
         {
-            StartLevel();                
-            
-
-            dayText.SetActive(true);
-            darkenPanel.SetActive(false);
-            transitionDayText.SetActive(false);
-            transitionCountdownText.SetActive(false);
-            DurationText.SetActive(false);
-            startscreenButton.SetActive(false);
+            StartLevel();
+            EndTransition();
+        }
+        //spawner update
+        if (dayNumber == 16)
+        {
+            SceneManager.LoadScene("FinalScene");
+        }
+        else if (dayNumber == 13)
+        {
+            AlgaeSpawner.SetActive(true);
+            BottleSpawner.SetActive(true);
+            BoxSpawner.SetActive(true);
+        }
+        else if (dayNumber == 10)
+        {
+            BoxSpawner.SetActive(true);
+            AlgaeSpawner.SetActive(true);
+        }
+        else if (dayNumber == 8)
+        {
+            AlgaeSpawner.SetActive(true);
+            BoxSpawner.SetActive(false);
+            BottleSpawner.SetActive(false);
+        }
+        else if (dayNumber == 5)
+        {
+            BoxSpawner.SetActive(true);
+        }
+        else if (dayNumber == 3)
+        {
+            BottleSpawner.SetActive(true);
+            BoxSpawner.SetActive(false);
         }
     }
     public void StartLevel()
     {
-        isLevelFinished = false;
-        dayNumber = 1;
         dayNumber++;
         dayNumberText.text = "Day " + dayNumber;
-        
-        timer = levelDuration += 5;
+
+        isLevelFinished = false;
+        timer = levelDuration += 1;
     }
     public void StartTransition()
     {
-        
+        isLevelFinished = true;
+        transitionStarted = true;
+
+        darkenPanel.SetActive(true);
+        dayText.SetActive(true);
+        transitionDayText.SetActive(true);
+        transitionCountdownText.SetActive(true);
+        DurationText.SetActive(true);
+        startscreenButton.SetActive(true);
+
+        CountdownScript.Instance.ResetCountdown();
+    }
+    void EndTransition()
+    {
+        darkenPanel.SetActive(false);
+        dayText.SetActive(true);
+        transitionDayText.SetActive(false);
+        transitionCountdownText.SetActive(false);
+        DurationText.SetActive(false);
+        startscreenButton.SetActive(false);
+
+        transitionStarted = false;
     }
     public void StartScreen() 
     {

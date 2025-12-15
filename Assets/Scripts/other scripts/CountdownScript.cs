@@ -35,7 +35,7 @@ public class CountdownScript : MonoBehaviour
     }
     public void ResetCountdown()
     {
-        timeLeft = 10f;
+        timeLeft = 5f;
         timerStarted = false;
         enabled = true;
     }

@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
+    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
+
     public float spawnInterval; 
 
     private Camera mainCamera;
@@ -11,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        enemyPrefabs.Add(enemyPrefab);
+
     }
 
     private void Update()
@@ -33,6 +38,6 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(new Vector3(1.1f, Random.Range(0f, 1f), 0));
         spawnPosition.z = 0f; 
 
-        Instantiate(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)], spawnPosition, Quaternion.identity); // instantiates the enemy prefab
+        Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity); // instantiates the enemy prefab
     }
 }

@@ -1106,8 +1106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262768e8ea8c445b5ad8cba3f765374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 8871186897533566046, guid: 84752b01666243043b1d3d46e5d7ac9b, type: 3}
+  enemyPrefab: {fileID: 8871186897533566046, guid: deae25b7d318e6a4ca9cb64cb10d62d5, type: 3}
+  enemyPrefabs: []
   spawnInterval: 5
 --- !u!1 &519420028
 GameObject:
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f688d7d4819ad8408ba544b04dbbd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 10
+  timeLeft: 5
   countdownText: {fileID: 1134756690}
 --- !u!1 &754248453
 GameObject:
@@ -3146,9 +3146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262768e8ea8c445b5ad8cba3f765374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 2544793785366220483, guid: 0648a7ab2896c5740a54d05ce795c5c9, type: 3}
-  spawnInterval: 4
+  enemyPrefab: {fileID: 2544793785366220483, guid: 0648a7ab2896c5740a54d05ce795c5c9, type: 3}
+  enemyPrefabs: []
+  spawnInterval: 3.5
 --- !u!1 &1623407078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,9 +3731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262768e8ea8c445b5ad8cba3f765374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 8871186897533566046, guid: 2605af91d4ed70542b6de351c69e3954, type: 3}
-  spawnInterval: 3
+  enemyPrefab: {fileID: 8871186897533566046, guid: 741e1dcaca4ad5e469bfb8dd1ebe5226, type: 3}
+  enemyPrefabs: []
+  spawnInterval: 2.5
 --- !u!1001 &293360300890269369
 PrefabInstance:
   m_ObjectHideFlags: 0

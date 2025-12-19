@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
 
     public float spawnInterval; 

@@ -15,7 +15,6 @@ public class EnemySpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         enemyPrefabs.Add(enemyPrefab);
-
     }
 
     private void Update()

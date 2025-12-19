@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262768e8ea8c445b5ad8cba3f765374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8871186897533566046, guid: deae25b7d318e6a4ca9cb64cb10d62d5, type: 3}
+  enemyPrefab: {fileID: 8871186897533566046, guid: f560ec89cb677eb469c8528ef9a3deb3, type: 3}
   enemyPrefabs: []
   spawnInterval: 5
 --- !u!1 &519420028
@@ -3731,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262768e8ea8c445b5ad8cba3f765374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8871186897533566046, guid: 741e1dcaca4ad5e469bfb8dd1ebe5226, type: 3}
+  enemyPrefab: {fileID: 8871186897533566046, guid: adbb95378575f85478ec7cd75b959de2, type: 3}
   enemyPrefabs: []
   spawnInterval: 2.5
 --- !u!1001 &293360300890269369

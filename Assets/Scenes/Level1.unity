@@ -3405,8 +3405,8 @@ MonoBehaviour:
   transitionCountdownText: {fileID: 692848603}
   DurationText: {fileID: 1134756688}
   startscreenButton: {fileID: 772231268}
-  BoxSpawner: {fileID: 0}
-  BottleSpawner: {fileID: 0}
+  BoxSpawner: {fileID: 1844724333}
+  BottleSpawner: {fileID: 615126033}
   AlgaeSpawner: {fileID: 1503291261}
 --- !u!4 &1822517137
 Transform:
